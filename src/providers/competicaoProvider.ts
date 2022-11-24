@@ -75,6 +75,6 @@ export const competicaoProvider = {
   ],
   video: {
     text: 'Se interessou e quer sentir na pele a emoção de uma competição? Confira nosso vídeo da 15ª Edição da competição',
-    url: 'https://www.youtube.com/watch?v=z2cfwzdomUc'
+    url: 'https://www.youtube.com/embed/z2cfwzdomUc'
   }
 }
