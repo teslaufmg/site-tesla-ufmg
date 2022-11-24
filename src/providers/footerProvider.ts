@@ -4,8 +4,7 @@ export const FooterOptionsProvider = {
       { label: 'História', to: '/historia' },
       { label: 'Protótipos', to: '/prototipos' },
       { label: 'Equipe', to: '/equipe' },
-      { label: 'Parceiros', to: '/parceiros' },
-      { label: 'Sugestões', to: '/sugestoes' }
+      { label: 'Parceiros', to: '/parceiros' }
     ],
     [
       { label: 'Blog', to: '/blog' },
@@ -15,10 +14,12 @@ export const FooterOptionsProvider = {
     ]
   ],
   social: [
-    { label: 'Facebook', to: '/' },
-    { label: 'Instagram', to: '/' },
-    { label: 'Youtube', to: '/' },
-    { label: 'Contato', to: '/' },
-    { label: '#GoTesla', to: '/' }
+    { label: 'Facebook', to: 'https://www.facebook.com/formulateslaufmg' },
+    { label: 'Instagram', to: 'https://www.instagram.com/teslaufmg/' },
+    { label: 'Youtube', to: 'https://www.youtube.com/@formulateslaufmg9376' },
+    {
+      label: 'Contato',
+      to: 'mailto:formulateslaufmg@gmail.com?Subject=Site%20-%20'
+    }
   ]
 }

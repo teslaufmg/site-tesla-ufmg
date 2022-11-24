@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
 import { useHeaderContext } from '../../contexts/HeaderContext'
-import { useIsOnScreen } from '../../hooks/useIsOnScreen'
 
 import { GetStaticProps } from 'next'
 import { Footer } from '../../components/Footer'
@@ -53,71 +52,32 @@ export const getStaticProps: GetStaticProps = async context => {
   }
 }
 
-const margin_error = 50
-const change_direction_margin = 50
-var scroll_flag = false
-var lastScrollTop = 0
-var direction_onchange = 'down'
-
 const Prototipo: React.FC = (props: PrototipoData) => {
   const router = useRouter()
   const { prototipo } = router.query as { prototipo: Prototipos }
 
-  const { toggleColor } = useHeaderContext()
-  const { elementRef: sectionStartRef, isOnScreen } = useIsOnScreen(0.01)
+  const { handleColor } = useHeaderContext()
   const blackSection = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    toggleColor()
-  }, [isOnScreen])
 
   useEffect(function mount() {
     function onScroll() {
       if (!blackSection) return
-
-      var aux_direction = 'down'
-      var st = window.pageYOffset || document.documentElement.scrollTop
-      if (st > lastScrollTop) {
-        aux_direction = 'down'
-      } else {
-        aux_direction = 'up'
-      }
-      lastScrollTop = st <= 0 ? 0 : st
 
       const element = blackSection.current.getBoundingClientRect()
       const elementTop = element.top
       const elementHeight = element.height
 
       if (
-        (!scroll_flag &&
-          ((elementTop < margin_error && elementTop > -margin_error) ||
-            (elementTop * -1 > elementHeight - margin_error &&
-              elementTop * -1 < elementHeight + margin_error))) ||
-        (scroll_flag &&
-          aux_direction !== direction_onchange &&
-          ((elementTop > margin_error &&
-            elementTop < margin_error + change_direction_margin) ||
-            (elementTop < -margin_error &&
-              elementTop > -margin_error - change_direction_margin) ||
-            (elementTop * -1 >
-              elementHeight - margin_error - change_direction_margin &&
-              elementTop * -1 < elementHeight - margin_error) ||
-            (elementTop * -1 <
-              elementHeight + margin_error + change_direction_margin &&
-              elementTop * -1 > elementHeight + margin_error)))
+        elementTop > elementHeight ||
+        (elementTop <= 0 && elementTop > -elementHeight)
       ) {
         window.requestAnimationFrame(() => {
-          direction_onchange = aux_direction
-          scroll_flag = true
-          toggleColor()
+          handleColor('white')
         })
-      } else if (
-        scroll_flag &&
-        (elementTop > margin_error || elementTop < -margin_error) &&
-        (elementTop * -1 < elementHeight - margin_error ||
-          elementTop * -1 > elementHeight + margin_error)
-      ) {
-        scroll_flag = false
+      } else {
+        window.requestAnimationFrame(() => {
+          handleColor('black')
+        })
       }
     }
 
@@ -134,12 +94,7 @@ const Prototipo: React.FC = (props: PrototipoData) => {
         <title>Tesla UFMG | {prototipo}</title>
       </Head>
       <Container>
-        <Section
-          id="start"
-          ref={sectionStartRef}
-          withBackground
-          car={prototipo as Prototipos}
-        >
+        <Section id="start" withBackground car={prototipo as Prototipos}>
           <SectionStartContent
             left={props.sectionStart.left}
             top={props.sectionStart.top}
