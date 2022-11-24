@@ -12,7 +12,11 @@ Hospedado no site da Vercel em https://tesla-ufmg.vercel.app/
 
 Após as instalações, para clonar o repositório, rode o seguinte comando em seu terminal na pasta desejada
 
-- Clone do repositório: git clone https://github.com/Tesla-UFMG/site-tesla-ufmg.git
+- Clone do repositório: git clone https://github.com/teslaufmg/site-tesla-ufmg
+
+Caso não tenha permissão de poder clonar ou fazer commits nesse repositório solicite a algum perfil com acesso de administrador a esse repositório
+
+- Link da página para liberar acesso: https://github.com/teslaufmg/site-tesla-ufmg/settings/access
 
 #### Instalação:
 
