@@ -95,6 +95,7 @@ const EquipeAno: React.FC = () => {
                             name={member.name}
                             role={member.role}
                             imagePath={member.imagePath}
+                            year={year as string}
                           />
                         </a>
                       )

@@ -165,7 +165,10 @@ const CapitainUnstyled = ({
     <div className={className}>
       <div className="image-wrapper">
         <Image
-          src={'/assets/images/equipe/' + (imagePath || 'default-profile.webp')}
+          src={
+            '/assets/images/equipe/' +
+            (imagePath ? year + '/' + imagePath : 'default-profile.webp')
+          }
           layout="fill"
         />
       </div>
@@ -296,18 +299,23 @@ const MemberUnstyled = ({
   className,
   name,
   role,
-  imagePath
+  imagePath,
+  year
 }: {
   className?: string
   name: string
   role: string
   imagePath?: string
+  year: string
 }) => {
   return (
     <div className={className}>
       <div className="image-wrapper">
         <Image
-          src={'/assets/images/equipe/' + (imagePath || 'default-profile.webp')}
+          src={
+            '/assets/images/equipe/' +
+            (imagePath ? year + '/' + imagePath : 'default-profile.webp')
+          }
           layout="fill"
         />
       </div>
