@@ -202,16 +202,16 @@ export const Popover = styled(PopoverUnstyled)`
   }
 `
 
-const ImageWrapperUnstyled = ({ 
-  className, 
-  category, 
-  path, 
-  title, 
-  description, 
-  text, 
-  to, 
-  social 
-}: { 
+const ImageWrapperUnstyled = ({
+  className,
+  category,
+  path,
+  title,
+  description,
+  text,
+  to,
+  social
+}: {
   className?: string
   category: Category
   path: string
@@ -220,7 +220,7 @@ const ImageWrapperUnstyled = ({
   return (
     <div className={className}>
       <Image
-        src={"/assets/images/parceiros/" + category + "/" + path}
+        src={'/assets/images/parceiros/' + category + '/' + path}
         layout="fill"
         onClick={() => setIsPopoverOpen(true)}
       />
@@ -242,56 +242,43 @@ const ImageWrapperUnstyled = ({
   )
 }
 
-export const ImageWrapper = styled(ImageWrapperUnstyled)<{ category: Category }>`
+export const ImageWrapper = styled(ImageWrapperUnstyled)<{
+  category: Category
+}>`
   position: relative;
   margin: 0 auto;
 
   ${props =>
     props.category === 'diamante' && {
-      width: '70%',
-      maxWidth: '800px'
+      margin: 'auto',
+      width: '350px'
     }}
 
   ${props =>
     props.category === 'platina' && {
-      width: '60%',
-      maxWidth: '600px'
+      margin: 'auto',
+      width: '250px'
     }}
 
   ${props =>
     props.category === 'ouro' && {
-      width: '40%',
-      maxWidth: '400px',
-      minWidth: '110px',
+      margin: 'auto',
+      width: '200px'
     }}
 
   ${props =>
     props.category === 'prata' && {
-      width: '30%',
-      maxWidth: '300px',
-      minWidth: '100px',
+      margin: 'auto',
+      width: '150px'
     }}
 
   ${props =>
     props.category === 'bronze' && {
-      width: '25%',
-      maxWidth: '250px',
-      minWidth: '90px',
+      margin: 'auto',
+      width: '100px'
     }}
 
-  ${props =>
-    props.category === 'parceiros' && {
-      width: '20%',
-      maxWidth: '200px',
-      minWidth: '80px',
-    }}
 
-  ${props =>
-    props.category === 'apoio' && {
-      width: '20%',
-      maxWidth: '200px',
-      minWidth: '70px',
-    }}
 
   & > span {
     cursor: pointer;
