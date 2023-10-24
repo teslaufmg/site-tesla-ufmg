@@ -109,12 +109,7 @@ export const parceirosProvider: {
           facebook: 'https://www.facebook.com/triadimensio/?locale=pt_BR',
           instagram: 'https://www.instagram.com/triadimensio_impressao3d/'
         }
-      }
-    ]
-  },
-  {
-    category: 'ouro',
-    partners: [
+      },
       {
         path: 'st.png',
         title: 'ST',
